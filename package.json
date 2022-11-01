@@ -1,0 +1,21 @@
+{
+  "name": "file-organiser",
+  "version": "1.0.0",
+  "description": "Node JS File Organiser",
+  "main": "organiser.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon organiser.js Test Testing 123"
+  },
+  "keywords": [
+    "node",
+    "javascript",
+    "file",
+    "organiser"
+  ],
+  "author": "Sasabh",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
