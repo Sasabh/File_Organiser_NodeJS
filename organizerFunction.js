@@ -63,21 +63,22 @@ const organiseFn = (pathVar = "", isCut) => {
         2.  If organisedFiles Folder exists => Change name or filter in the available directory
     */
     let testPathValidity = /^(\w+\/?)+$/.test(pathVar);
+    let testPathValidityWin = /[a-zA-Z]:[\\\/](?:[a-zA-Z0-9]+[\\\/])*([a-zA-Z0-9])+/gm.test(pathVar);
     let newfolderPath = path.join(pathVar, "Organised_Files");
     if (
-        pathVar &&
-        testPathValidity &&
-        existsSync(pathVar) &&
-        !existsSync(newfolderPath)
+      pathVar &&
+      (testPathValidity || testPathValidityWin) &&
+      existsSync(pathVar) &&
+      !existsSync(newfolderPath)
     ) {
-        mkdirSync(newfolderPath);
+      mkdirSync(newfolderPath);
     } else if (existsSync(newfolderPath)) {
-        console.log(
-            `Organised_Files Folder already exists and thus organsing in the same folder`
-        );
+      console.log(
+        `Organised_Files Folder already exists and thus organsing in the same folder`
+      );
     } else {
-        console.log(`Please enter valid File Path.`);
-        return;
+      console.log(`Please enter valid File Path.`);
+      return;
     }
 
     //3.  Identify all the files in the given path
@@ -145,6 +146,7 @@ const sendFile = (srcFilePath, destination, category, isCut) => {
     let destinationPath = path.join(categoryPath, fileName);
     copyFileSync(srcFilePath, destinationPath);
     isCut ? unlinkSync(srcFilePath) : null;
+    console.log(fileName," : File transferred.");
 };
 
 module.exports = { showfileTreeFn, organiseFn, helpFn };
