@@ -152,6 +152,7 @@ const sendFile = (srcFilePath, destination, category, isCut) => {
   let destinationPath = path.join(categoryPath, fileName);
   copyFileSync(srcFilePath, destinationPath);
   isCut ? unlinkSync(srcFilePath) : null;
+  console.log(fileName, `: File ${isCut ? "Transferred" : "Copied"}`);
 };
 
 const helpFn = () => {
