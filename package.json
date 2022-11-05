@@ -5,7 +5,9 @@
   "main": "organiser.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon organiser.js Test Testing 123"
+    "start": "node organiseMyFiles show_file_tree Test",
+    "organise": "node organiseMyFiles organize_files Test",
+    "format": "prettier --write \"*.{js,jsx}\""
   },
   "keywords": [
     "node",
@@ -15,7 +17,7 @@
   ],
   "author": "Sasabh",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^2.0.20"
+  "dependencies": {
+    "prettier": "^2.7.1"
   }
 }
