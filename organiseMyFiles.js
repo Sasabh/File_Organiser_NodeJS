@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 const { showfileTreeFn, organiseFn, helpFn } = require("./organizerFunction");
 
 //Get CLI Inputs
