@@ -42,7 +42,8 @@ const showfileTreeFn = (pathVar = "") => {
 
   // Path Validity
   let testPathValidity = /^(\w+\/?)+$/.test(pathVar);
-  let testPathValidityWin = /^(\w+\/?)+$/.test(pathVar);
+  let testPathValidityWin =
+    /[a-zA-Z]:[\\\/](?:[a-zA-Z0-9]+[\\\/])*([a-zA-Z0-9])+/gm.test(pathVar);
   let pathExist = existsSync(pathVar);
   if (pathVar && (testPathValidity || testPathValidityWin) && pathExist) {
     console.log("Path Exists");
