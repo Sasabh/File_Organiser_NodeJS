@@ -77,10 +77,12 @@ const organiseFn = (pathVar = "", isCut) => {
         2.  If organisedFiles Folder exists => Change name or filter in the available directory
     */
   let testPathValidity = /^(\w+\/?)+$/.test(pathVar);
+  let testPathValidityWin =
+    /[a-zA-Z]:[\\\/](?:[a-zA-Z0-9]+[\\\/])*([a-zA-Z0-9])+/gm.test(pathVar);
   let newfolderPath = path.join(pathVar, "Organised_Files");
   if (
     pathVar &&
-    testPathValidity &&
+    (testPathValidity || testPathValidityWin) &&
     existsSync(pathVar) &&
     !existsSync(newfolderPath)
   ) {
